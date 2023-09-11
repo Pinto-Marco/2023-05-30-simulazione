@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import it.polito.tdp.gosales.model.Arco;
 import it.polito.tdp.gosales.model.DailySale;
 import it.polito.tdp.gosales.model.Products;
 import it.polito.tdp.gosales.model.Retailers;
@@ -108,6 +110,35 @@ public class GOsalesDAO {
 			throw new RuntimeException("Error Connection Database");
 		}
 	}
+	
+	public List<Arco> getAllArchi(HashMap retailers, Integer anno, Integer inputNum){
+		
+		
+		String query = "SELECT * from go_daily_sales";
+		List<Arco> result = new ArrayList<Arco>();
+
+		try {
+			Connection conn = DBConnect.getConnection();
+			PreparedStatement st = conn.prepareStatement(query);
+			ResultSet rs = st.executeQuery();
+
+			while (rs.next()) {
+				
+			}
+			conn.close();
+			return result;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Errore connessione al database");
+			throw new RuntimeException("Error Connection Database");
+		}
+		
+	}
+
+
+
+
+	
 	
 	
 }
